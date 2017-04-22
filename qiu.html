@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;}
+			p{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			/*background-color: red;*/
+			border-radius: 50%;
+			top: 0px;
+			left:0px;}
+			#a{width: 500px;height: 300px;border:  1px solid red;position: relative;}
+		</style>
+	</head>
+	<body>
+	<div id="a">
+		
+	</div>                                                                                 
+	<script type="text/javascript">
+		var a=document.getElementById("a")
+			function sun(left,top){
+				this.zj=30;
+				this.left=left||Math.random()*(a.clientWidth-this.zj);
+				this.top=top||Math.random()*(a.clientHeight-this.zj);
+//				console.log(this.top)
+				this.x=parseInt(Math.random()*11)-5;
+				this.y=parseInt(Math.random()*11)-5;
+				console.log(this.top);
+				console.log(this.left);
+				this.dong();
+				this.num();
+			};
+			    sun.prototype.dong=function(){
+			    this.ddv=document.createElement("p");
+			    a.appendChild(this.ddv);
+		     };
+		      sun.prototype.dong1=function(){
+		     	this.ddv.style.left=this.left+"px";
+		     	this.ddv.style.top=this.top+"px";
+		     }
+		      var i=0
+		     sun.prototype.num=function(){
+		        var that=this;
+//		        console.log(that.left+=that.x)
+//		        console.log(that.top+=that.y)
+		        this.b=setInterval(function(){
+		        that.left+=that.x;
+		        that.top+=that.y;
+		        i++
+		        m=["#080808","#8B4789","#A0522D","#C67171","#CDBE70","#EE2C2C","#EED8AE"]
+		        that.ddv.style.backgroundColor=m[i]
+		        if(that.left<=0||that.left>=(a.clientWidth-30)){ that.x=-that.x;}
+		        if(that.top<=0||that.top>=(a.clientHeight-30)){that.y=-that.y;}
+		        if(i==m.length+1  ){i=0}
+                that.dong1()
+		        },10)
+		     }
+	setInterval(function(){
+		    new sun();
+		    new sun();
+//		    new sun();
+//		    new sun();
+//		    new sun();
+//		    new sun();
+		    },2000)
+		</script>
+	</body>
+</html>
